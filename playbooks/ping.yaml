@@ -1,0 +1,5 @@
+--- 
+- name: Ping all servers
+  hosts: managed
+  tasks:
+    - ping: 
