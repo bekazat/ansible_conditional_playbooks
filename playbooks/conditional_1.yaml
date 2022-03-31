@@ -1,0 +1,10 @@
+---
+- name: 
+  hosts: managed
+  tasks: 
+    - name: Pinging Servers
+      ping:
+
+    - name:
+      debug:
+        msg: "{{ansible_distribution}}"
