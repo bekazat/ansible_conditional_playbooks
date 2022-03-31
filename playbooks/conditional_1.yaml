@@ -4,7 +4,9 @@
   tasks: 
     - name: Pinging Servers
       ping:
+      register: pong
 
     - name:
       debug:
         msg: "{{ansible_distribution}}"
+      when: pong is failed
