@@ -5,8 +5,19 @@
 # Apache2  Server
 [web]
 10.108.0.4
+ansible_port: 2222
 
 # Managed Servers
 [managed]
 10.108.0.3
 10.108.0.4
+
+children:
+  dev:
+  hosts:
+    web1:
+      ansible_host: 10.108.0.3
+      ansible_port: 2222
+    web:
+      ansible_host: 10.108.0.4
+      ansible_port: 2222
