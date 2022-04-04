@@ -2,4 +2,23 @@
 - name: Ping all servers
   hosts: managed
   tasks:
-    - ping: 
+    - name: Pinging servers
+      ping: 
+      register: pong
+
+    - name: Creating a file if ping successfull
+      file:
+        path: /root/newfile.txt
+        state: touch
+#      when: pong is failed
+    
+    - name: Writing into newly created file
+      blockinfile:
+        path: /root/newfile.txt
+        block: |
+          This is line1
+          This is line2
+      when: pong is success
+
+
+      

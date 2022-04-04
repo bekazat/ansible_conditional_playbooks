@@ -1,0 +1,19 @@
+---
+- name: Update
+  hosts: managed
+  tasks:
+    - name: Updating CentOS
+      yum: 
+        name: "*"
+        state: latest
+      when: ansible_pkg_mgr == "yum"
+
+    - name: Updating Ubuntu
+      apt: 
+        name: "*"
+        state: latest
+      when: ansible_pkg_mgr == "apt" 
+
+    - name: Restarting Servers
+      reboot:      
+        # reboot_timeout: 300

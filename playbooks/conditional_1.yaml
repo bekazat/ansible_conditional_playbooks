@@ -9,4 +9,4 @@
     - name:
       debug:
         msg: "{{ansible_distribution}}"
-      when: pong is failed
+      when: pong is success

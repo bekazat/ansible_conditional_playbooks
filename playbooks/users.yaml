@@ -1,0 +1,16 @@
+--- 
+- name: Adding multiple users
+  hosts: managed
+  tasks: 
+    - name: Adding users Anna
+      user:
+        name: anna
+    - name: Adding user Bob
+      user:
+        name: bob
+    - name: Addin user Amy
+      user:
+        name: amy 
+    - name: Adding user Tom
+      user: 
+        name: tom

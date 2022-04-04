@@ -1,21 +1,41 @@
 ---
 - name:
-  hosts: web
-  gather_facts: no
+  hosts: web1
+  gather_facts: yes
   tasks:
-#    - name: Ping
-#      ping: 
-    
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+
+    - name: Reboot Server
+      reboot:
+
+    - name: Wait for server to reboot
+      wait_for:
+        host: 10.108.0.3
+        port: 22
+        delay: 1
+        timeout: 300
+        
+      
     - name: Change port to 2222 
       lineinfile:
         path: /etc/ssh/sshd_config
-        regexp: '^Port 2222'                       # is what to find   # Caret sign
-        line: 'Port 22'
+        regexp: '^#Port 22'                       # is what to find   # Caret sign
+        line: 'Port 2222'
 
     - name: Restart sshd
       systemd: 
         name: sshd
         state: restarted
+
+
+
+
+
+
+
+
 
 #    - name: Setup selinux for alternate SSH port
 #      seport:
