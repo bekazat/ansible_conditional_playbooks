@@ -1,23 +1,52 @@
+web ansible_host=10.108.0.4 
+web1 ansible_host=10.108.0.3
+
+
+# Web server group
+[managed]
+web1
+web
+
+# Parent group information, combined 2 groups into one
+# [mmanaged_grp:children]
+# managed
+# db_managed
+
+
+
+
+
+
+
+
+#all:
+#  hosts: 
+#    10.108.0.3:
+#    10.108.0.4:
+
+
+
+
+
 # Apache Server
-[web1]
-10.108.0.3
+#[web1]
+#10.108.0.3
 
 # Apache2  Server
-[web]
-10.108.0.4
-ansible_port: 2222
+#[web]
+#10.108.0.4
 
 # Managed Servers
-[managed]
-10.108.0.3
-10.108.0.4
+#[managed]
+#10.108.0.3
+#10.108.0.4
 
-children:
-  dev:
-  hosts:
-    web1:
-      ansible_host: 10.108.0.3
-      ansible_port: 2222
-    web:
-      ansible_host: 10.108.0.4
-      ansible_port: 2222
+#children:
+# dev:
+#  hosts:
+#   web1:
+#     ansible_host: 10.108.0.3
+#     ansible_port: 2222
+#  web:
+#    ansible_host: 10.108.0.4
+#    ansible_port: 2222

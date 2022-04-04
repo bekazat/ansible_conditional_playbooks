@@ -1,0 +1,7 @@
+---
+- name: Ping Server
+hosts: all
+gather_facts: no
+tasks:
+  - name: Ping
+    ping:

@@ -10,16 +10,16 @@
       lineinfile:
         path: /etc/ssh/sshd_config
         regexp: '^Port 2222'                       # is what to find   # Caret sign
-        line: 'Port 7789'
+        line: 'Port 22'
 
     - name: Restart sshd
       systemd: 
         name: sshd
         state: restarted
 
-    - name: Setup selinux for alternate SSH port
-      seport:
-        ports: "2222"
-        proto: "tcp"
-        setype: "ssh_port_t"
-        state: "present"
+#    - name: Setup selinux for alternate SSH port
+#      seport:
+#        ports: "2222"
+#        proto: "tcp"
+#        setype: "ssh_port_t"
+#        state: "present"
