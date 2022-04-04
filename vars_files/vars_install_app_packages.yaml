@@ -1,0 +1,4 @@
+---
+target_hosts: "managed"
+facts: "yes"
+message: "This message is from vars_files"

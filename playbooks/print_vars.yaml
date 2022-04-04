@@ -1,7 +1,13 @@
 ---
 - name: Ping Server
-hosts: all
-gather_facts: no
-tasks:
-  - name: Ping
-    ping:
+  hosts: managed
+  gather_facts: no
+  vars_files:
+    - ../vars_files/vars_print_vars.yaml 
+  tasks:
+    - name: Ping
+      ping:
+    
+    - name: Print variable
+      debug:
+        msg: "{{message}}"

@@ -1,0 +1,20 @@
+---
+- name: App deployment
+  hosts: "{{target_hosts}}"
+  vars_files:
+    - ../vars_files/vars_install_app_packages.yaml 
+  vars: 
+    message: "This message is from playbook var"
+  gather_facts: "{{facts}}"
+  tasks:
+    - name: Ping servers
+      ping:
+
+    - name: Print Message
+      debug:
+        msg: "{{message}}"
+   
+    - name: Print Facts
+      debug:
+        msg: "{{target_hosts}} Operating system is: {{ansible_distribution}}" 
+  
